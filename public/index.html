@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SOLES</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" type="image/png" href="/images/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="aos-master/dist/aos.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="particles-js"></div>
+
+    <div class="preloader">
+      <h1>SOLES</h1>
+      <div class="container">
+        <div aria-live="assertive" role="alert" class="loader"></div>
+      </div>
+      <p>loading</p>
+    </div>
+
+    <div class="menu">
+      <ul>
+        <li>
+          <svg class="dropdown_close" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M11.9997 10.5865L16.9495 5.63672L18.3637 7.05093L13.4139 12.0007L18.3637 16.9504L16.9495 18.3646L11.9997 13.4149L7.04996 18.3646L5.63574 16.9504L10.5855 12.0007L5.63574 7.05093L7.04996 5.63672L11.9997 10.5865Z"
+            ></path>
+          </svg>
+        </li>
+        <li>Account</li>
+        <li>Settings</li>
+        <li>Orders</li>
+        <li>Coupons</li>
+        <li class="login_button">Log In</li>
+      </ul>
+    </div>
+
+    <div class="login">
+      <div class="container">
+        <h1>Log In</h1>
+        <div class="username_input input_container">
+          <input
+            type="text"
+            name="username"
+            id="username"
+            placeholder="username"
+            required
+          />
+        </div>
+        <div class="password_input input_container">
+          <input
+            type="password"
+            name="password"
+            id="password"
+            placeholder="password"
+            required
+          />
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="show_password"
+            fill="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M1.18164 12C2.12215 6.87976 6.60812 3 12.0003 3C17.3924 3 21.8784 6.87976 22.8189 12C21.8784 17.1202 17.3924 21 12.0003 21C6.60812 21 2.12215 17.1202 1.18164 12ZM12.0003 17C14.7617 17 17.0003 14.7614 17.0003 12C17.0003 9.23858 14.7617 7 12.0003 7C9.23884 7 7.00026 9.23858 7.00026 12C7.00026 14.7614 9.23884 17 12.0003 17ZM12.0003 15C10.3434 15 9.00026 13.6569 9.00026 12C9.00026 10.3431 10.3434 9 12.0003 9C13.6571 9 15.0003 10.3431 15.0003 12C15.0003 13.6569 13.6571 15 12.0003 15Z"
+            ></path>
+          </svg>
+        </div>
+        <div class="login_submit">Log In</div>
+      </div>
+    </div>
+
+    <div class="nav" style="color: white">
+      <div class="logo_nav">SOLES</div>
+      <div class="menu_dropdown">MENU</div>
+      <div class="icons">
+        <svg
+          class="wishlist_button"
+          fill="currentColor"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M12.001 4.52853C14.35 2.42 17.98 2.49 20.2426 4.75736C22.5053 7.02472 22.583 10.637 20.4786 12.993L11.9999 21.485L3.52138 12.993C1.41705 10.637 1.49571 7.01901 3.75736 4.75736C6.02157 2.49315 9.64519 2.41687 12.001 4.52853ZM18.827 6.1701C17.3279 4.66794 14.9076 4.60701 13.337 6.01687L12.0019 7.21524L10.6661 6.01781C9.09098 4.60597 6.67506 4.66808 5.17157 6.17157C3.68183 7.66131 3.60704 10.0473 4.97993 11.6232L11.9999 18.6543L19.0201 11.6232C20.3935 10.0467 20.319 7.66525 18.827 6.1701Z"
+          ></path>
+        </svg>
+        <svg
+          class="cart_button"
+          fill="currentColor"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M4.00436 6.41686L0.761719 3.17422L2.17593 1.76001L5.41857 5.00265H20.6603C21.2126 5.00265 21.6603 5.45037 21.6603 6.00265C21.6603 6.09997 21.6461 6.19678 21.6182 6.29L19.2182 14.29C19.0913 14.713 18.7019 15.0027 18.2603 15.0027H6.00436V17.0027H17.0044V19.0027H5.00436C4.45207 19.0027 4.00436 18.5549 4.00436 18.0027V6.41686ZM6.00436 7.00265V13.0027H17.5163L19.3163 7.00265H6.00436ZM5.50436 23.0027C4.67593 23.0027 4.00436 22.3311 4.00436 21.5027C4.00436 20.6742 4.67593 20.0027 5.50436 20.0027C6.33279 20.0027 7.00436 20.6742 7.00436 21.5027C7.00436 22.3311 6.33279 23.0027 5.50436 23.0027ZM17.5044 23.0027C16.6759 23.0027 16.0044 22.3311 16.0044 21.5027C16.0044 20.6742 16.6759 20.0027 17.5044 20.0027C18.3328 20.0027 19.0044 20.6742 19.0044 21.5027C19.0044 22.3311 18.3328 23.0027 17.5044 23.0027Z"
+          ></path>
+        </svg>
+        <div class="mode_switch">
+          <div class="toggle"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav_backdrop"></div>
+
+    <!-- <div class="hero"></div> -->
+
+    <div class="intro">
+      <video
+        src="/images/RTFKT x Nike Dunk Void (Trailer).mp4"
+        autoplay
+        muted
+        loop
+      ></video>
+      <div class="intro_text">
+        <h1>SOLES</h1>
+        <p>The future of footwear</p>
+        <a href="#products">
+          <p>Shop Now</p>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="arrow"
+            fill="currentColor"
+          >
+            <path
+              d="M11.9999 13.1714L16.9497 8.22168L18.3639 9.63589L11.9999 15.9999L5.63599 9.63589L7.0502 8.22168L11.9999 13.1714Z"
+            ></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="featured">
+      <div class="merch">
+        <img src="/images/merch_dark.jpg" alt="" />
+        <p>MERCH</p>
+      </div>
+      <div class="sale">
+        <img src="/images/sale_dark.jpeg" alt="" />
+        <p>SALE</p>
+      </div>
+      <div class="latest">
+        <img src="/images/latest_dark.jpeg" alt="" />
+        <p>LATEST</p>
+      </div>
+    </div>
+
+    <div class="heat products">
+      <p class="heading">HEAT</p>
+      <div class="prod_list" id="products">
+        <!-- <div class="card">
+          <div class="prod_img">
+            <img src="images/LS20240208222056.png" alt="" />
+          </div>
+          <div class="prod_details">
+            <div class="info">
+              <p>NIKE AIR FORCE 1</p>
+              <p>$100</p>
+            </div>
+            <div class="wishlist_button_container">
+              <svg
+                class="add_to_cart"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM11 11H7V13H11V17H13V13H17V11H13V7H11V11Z"
+                ></path>
+              </svg>
+
+              <svg
+                class="add_to_wishlist"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M12.001 4.52853C14.35 2.42 17.98 2.49 20.2426 4.75736C22.5053 7.02472 22.583 10.637 20.4786 12.993L11.9999 21.485L3.52138 12.993C1.41705 10.637 1.49571 7.01901 3.75736 4.75736C6.02157 2.49315 9.64519 2.41687 12.001 4.52853ZM18.827 6.1701C17.3279 4.66794 14.9076 4.60701 13.337 6.01687L12.0019 7.21524L10.6661 6.01781C9.09098 4.60597 6.67506 4.66808 5.17157 6.17157C3.68183 7.66131 3.60704 10.0473 4.97993 11.6232L11.9999 18.6543L19.0201 11.6232C20.3935 10.0467 20.319 7.66525 18.827 6.1701Z"
+                ></path>
+              </svg>
+            </div>
+          </div>
+        </div> -->
+      </div>
+    </div>
+
+    <div class="merchandise products">
+      <p class="heading">MERCHANDISE</p>
+      <div class="prod_list"></div>
+    </div>
+
+    <div class="basketball products">
+      <p class="heading">BASKETBALL SHOES</p>
+      <div class="prod_list"></div>
+    </div>
+
+    <div class="overlay product_overlay">
+      <!-- <div>
+        <div class="prod_display">
+          <div class="main_image">
+            <img src="/images/adidas_campus.png" alt="adidas_campus" />
+          </div>
+          <div class="thumbnails">
+            <img
+              class="active"
+              src="/images/adidas_campus.png"
+              alt="adidas_campus"
+            />
+            <img src="/images/adidas_campus.png" alt="adidas_campus" />
+            <img src="/images/adidas_campus.png" alt="adidas_campus" />
+            <img src="/images/adidas_campus.png" alt="adidas_campus" />
+          </div>
+        </div>
+
+        <div class="product_details">
+          <p>air force 1</p>
+          <p>$200</p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae,
+            beatae!
+          </p>
+        </div>
+      </div>
+      <div class="buttons">
+        <div class="add_to_cart_from_prod" id="${product.id}">
+          <p>Add to cart</p>
+        </div>
+        <div class="add_to_wishlist_from_prod" id="${product.id}">
+          <p>Add to wishlist</p>
+        </div>
+      </div> -->
+    </div>
+
+    <div class="footer">
+      <p class="logo">SOLES</p>
+
+      <div class="footer_menu">
+        <div class="company foot_menu">
+          <h1>COMPANY</h1>
+          <p>Home</p>
+          <p>About</p>
+          <p>FAQs</p>
+          <p>Careers</p>
+          <p>Hire</p>
+        </div>
+        <div class="legal foot_menu">
+          <h1>LEGAL</h1>
+          <p>Terms & Conditions</p>
+          <p>Privacy Policy</p>
+          <p>Cookie Policy</p>
+        </div>
+        <div class="support foot_menu">
+          <h1>SUPPORT</h1>
+          <p>Contact Us</p>
+          <p>Shipping</p>
+          <p>Returns</p>
+          <p>Track Order</p>
+        </div>
+        <div class="connect foot_menu">
+          <h1>CONNECT</h1>
+          <p>Instagram</p>
+          <p>Facebook</p>
+          <p>Twitter</p>
+          <p>LinkedIn</p>
+        </div>
+        <div class="personal_details foot_menu">
+          <p>solestreet@official.com</p>
+          <p>+91 891XXX XXX47</p>
+          <p>Suite 317 580 Barry Road, Porfirioland, TX 62681</p>
+        </div>
+      </div>
+      <div class="bottom">
+        <div class="copyright">&copy 2024 SOLES. All rights reserved</div>
+        <div class="back_to_top">
+          <svg
+            class="button_to_top"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+          >
+            <path
+              d="M12 4.83582L5.79291 11.0429L7.20712 12.4571L12 7.66424L16.7929 12.4571L18.2071 11.0429L12 4.83582ZM12 10.4857L5.79291 16.6928L7.20712 18.107L12 13.3141L16.7929 18.107L18.2071 16.6928L12 10.4857Z"
+            ></path>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <div class="wishlist overlay">
+      <div class="header">
+        <div class="heading">
+          <h1>Wishlist</h1>
+          <p class="wishlist_count counter">0 items</p>
+        </div>
+        <div class="wishlist_close close_button">
+          <svg xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M11.9997 10.5865L16.9495 5.63672L18.3637 7.05093L13.4139 12.0007L18.3637 16.9504L16.9495 18.3646L11.9997 13.4149L7.04996 18.3646L5.63574 16.9504L10.5855 12.0007L5.63574 7.05093L7.04996 5.63672L11.9997 10.5865Z"
+            ></path>
+          </svg>
+        </div>
+      </div>
+      <div class="wishlist_items items_container">
+        <!-- <div class="wishlist_item item">
+          <div class="prod_img">
+            <img src="images/jordan_1.jpeg" alt="jordan_1" />
+          </div>
+          <div class="details">
+            <p>NIKE AIR FORCE 1</p>
+            <p>$100</p>
+            <div class="buttons">
+              <div class="add_to_cart">
+                <p>Add to cart</p>
+              </div>
+              <div class="remove_from_wishlist">
+                <p>Remove from wishlist</p>
+              </div>
+            </div>
+          </div>
+        </div> -->
+      </div>
+    </div>
+
+    <div class="cart overlay">
+      <div class="header">
+        <div class="heading">
+          <h1>Cart</h1>
+          <p class="cart_count counter">0 items</p>
+        </div>
+        <div class="cart_close close_button">
+          <svg xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M11.9997 10.5865L16.9495 5.63672L18.3637 7.05093L13.4139 12.0007L18.3637 16.9504L16.9495 18.3646L11.9997 13.4149L7.04996 18.3646L5.63574 16.9504L10.5855 12.0007L5.63574 7.05093L7.04996 5.63672L11.9997 10.5865Z"
+            ></path>
+          </svg>
+        </div>
+      </div>
+      <div class="cart_items items_container"></div>
+      <div class="cart_footer">
+        <div class="checkout">Checkout</div>
+        <div class="cost">45000</div>
+      </div>
+    </div>
+
+    <div class="order_successful"><p>Order Successful</p></div>
+    <script type="text/javascript" src="particles.min.js"></script>
+    <script src="aos-master/dist/aos.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
