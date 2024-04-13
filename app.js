@@ -4,6 +4,7 @@ mongoose.connect("mongodb://localhost:27017/soles");
 const Product = require("./public/Product");
 const User = require("./public/User");
 const app = express();
+const path = require("path");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -80,6 +81,10 @@ app.post("/updateWishlist", async function (req, res) {
     console.log(e);
     res.status(200).json({ success: false, message: "Error" });
   }
+});
+
+app.all("*", (req, res) => {
+  res.status(404).sendFile(path.resolve(__dirname, "public", "404.html"));
 });
 
 app.listen(5000, () => {
