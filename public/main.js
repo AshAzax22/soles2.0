@@ -89,7 +89,6 @@ async function main() {
           body: JSON.stringify({ username, password }),
         });
         const response_json = await response.json();
-        console.log(response_json);
         if (response_json.message === "Login Successful") {
           login_flag = 1;
         } else if (response_json.message === "Account Created") {
@@ -103,7 +102,6 @@ async function main() {
           user = response_json.id;
           cart_items_array = response_json.cart;
           wishlist_items_array = response_json.wishlist;
-          console.log(user, cart_items_array, wishlist_items_array);
           reload_cart(1);
           reload_wishlist(1);
           set_wishlist_buttons(wishlist_items_array);
@@ -538,7 +536,6 @@ async function main() {
           add_to_cart_button.addEventListener("click", (ev) => {
             ev.stopPropagation();
             if (!user) {
-              console.log("login to save to cart");
               overlay_close_function(product_overlay);
               overlay_open_function(login_overlay);
               return;
@@ -669,9 +666,7 @@ async function main() {
       overlay.style.setProperty("transform", "translate(-50%,-50%) scale(1)");
     });
     if (overlay == document.querySelector(".login")) {
-      console.log("yes");
       let inp = overlay.querySelector("#username");
-      console.log(inp);
       inp.focus();
     }
   };
