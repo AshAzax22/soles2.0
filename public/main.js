@@ -99,7 +99,6 @@ async function main() {
           login_flag = 0;
         }
         if (login_flag) {
-          console.log(response_json);
           user = response_json.id;
           cart_items_array = response_json.cart;
           wishlist_items_array = response_json.wishlist;
@@ -129,7 +128,6 @@ async function main() {
           login_overlay.style.setProperty("background-color", "rgb(255,0,0)");
           login_submit.style.setProperty("opacity", "0");
 
-          document.querySelector("#username").value = "";
           document.querySelector("#password").type = "text";
           document.querySelector("#password").value = "incorrect password";
           setTimeout(() => {
@@ -191,11 +189,6 @@ async function main() {
   const mode_change = function () {
     toggle.style.left = mode * 60 + "%";
     mode = 1 - mode;
-    if (user) {
-      console.log(true);
-    } else {
-      console.log(false);
-    }
 
     let root = document.querySelector(":root");
     let rootStyles = getComputedStyle(root);
@@ -552,7 +545,7 @@ async function main() {
               add_to_cart_button.innerText = "Add to cart";
               add_to_cart_button.style.removeProperty("color");
             }, 1000);
-            cart_items_array.push(add_to_cart_button.id);
+            cart_items_array.push(Number(add_to_cart_button.id));
             reload_cart();
           });
         }
@@ -565,7 +558,6 @@ async function main() {
           add_to_wishlist_button.addEventListener("click", (ev) => {
             ev.stopPropagation();
             if (!user) {
-              console.log("login to save to wishlist");
               overlay_close_function(product_overlay);
               overlay_open_function(login_overlay);
               return;
@@ -578,7 +570,7 @@ async function main() {
               add_to_wishlist_button.innerText = "Add to wishlist";
               add_to_wishlist_button.style.removeProperty("color");
             }, 1000);
-            wishlist_items_array.push(add_to_wishlist_button.id);
+            wishlist_items_array.push(Number(add_to_wishlist_button.id));
             set_wishlist_buttons(wishlist_items_array);
             reload_wishlist();
           });
@@ -737,7 +729,7 @@ async function main() {
             body: JSON.stringify({ user, wishlist_items_array }),
           });
           let data = await response.json();
-          console.log(data);
+          // console.log(data);
         } catch (err) {
           console.log(err);
         }
@@ -808,18 +800,11 @@ async function main() {
       let remove_from_wishlist_button = remove_from_wishlist_buttons[i];
       remove_from_wishlist_button.addEventListener("click", (ev) => {
         ev.stopPropagation();
-        console.log(wishlist_items_array);
         for (let j = 0; j < wishlist_items_array.length; j++) {
-          console.log(wishlist_items_array[j]);
-          console.log("id of button: " + remove_from_wishlist_button.id);
           if (
             Number(wishlist_items_array[j]) ===
             Number(remove_from_wishlist_button.id)
           ) {
-            console.log(
-              "id of removing item: " + remove_from_wishlist_button.id
-            );
-            console.log(remove_from_wishlist_button.id);
             wishlist_items_array.splice(j, 1); // remove the product from the wishlist
             break;
           }
@@ -847,7 +832,7 @@ async function main() {
         set_wishlist_buttons(wishlist_items_array); // set the wishlist buttons
         reload_wishlist(); // reload the wishlist items
 
-        cart_items_array.push(add_to_cart_button.id); // add the product to the cart
+        cart_items_array.push(Number(add_to_cart_button.id)); // add the product to the cart
         reload_cart(); // reload the cart items
       });
     }
@@ -863,7 +848,6 @@ async function main() {
     add_to_wishlist_button.addEventListener("click", (e) => {
       e.stopPropagation();
       if (!user) {
-        console.log("login to save to wishlist");
         overlay_open_function(login_overlay);
         return;
       }
@@ -892,7 +876,7 @@ async function main() {
         add_to_wishlist_button.style.removeProperty("fill");
       } else {
         // if the product is not in the wishlist add it
-        wishlist_items_array.push(add_to_wishlist_button.id);
+        wishlist_items_array.push(Number(add_to_wishlist_button.id));
         add_to_wishlist_button.innerHTML = `<path d="M12.001 4.52853C14.35 2.42 17.98 2.49 20.2426 4.75736C22.5053 7.02472 22.583 10.637 20.4786 12.993L11.9999 21.485L3.52138 12.993C1.41705 10.637 1.49571 7.01901 3.75736 4.75736C6.02157 2.49315 9.64519 2.41687 12.001 4.52853Z"></path>`;
         add_to_wishlist_button.style.setProperty("fill", "red");
       }
@@ -921,7 +905,6 @@ async function main() {
   });
 
   const reload_cart = (n) => {
-    console.log(cart_items_array);
     cart_items_array = cart_items_array.map((e) => Number(e));
     // function to reload the cart items in the cart overlay
     if (n !== 1) {
@@ -935,7 +918,7 @@ async function main() {
             body: JSON.stringify({ user, cart_items_array }),
           });
           let data = await response.json();
-          console.log(data);
+          // console.log(data);
         } catch (err) {
           console.log(err);
         }
@@ -1031,7 +1014,7 @@ async function main() {
           }
         }
         reload_cart();
-        wishlist_items_array.push(add_to_wishlist_button.id);
+        wishlist_items_array.push(Number(add_to_wishlist_button.id));
         set_wishlist_buttons(wishlist_items_array); // set the wishlist buttons
         reload_wishlist();
       });
@@ -1046,11 +1029,10 @@ async function main() {
     add_to_cart_button.addEventListener("click", (e) => {
       e.stopPropagation();
       if (!user) {
-        console.log("login to save to cart");
         overlay_open_function(login_overlay);
         return;
       }
-      cart_items_array.push(add_to_cart_button.id);
+      cart_items_array.push(Number(add_to_cart_button.id));
       reload_cart();
     });
   }
