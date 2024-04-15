@@ -99,6 +99,7 @@ async function main() {
           login_flag = 0;
         }
         if (login_flag) {
+          console.log(response_json);
           user = response_json.id;
           cart_items_array = response_json.cart;
           wishlist_items_array = response_json.wishlist;
@@ -724,6 +725,7 @@ async function main() {
 
   const reload_wishlist = (n) => {
     // function to reload the wishlist items in the wishlist overlay
+    wishlist_items_array = wishlist_items_array.map((e) => Number(e));
     if (n != 1) {
       async function updateWishlist() {
         try {
@@ -754,7 +756,7 @@ async function main() {
 
     for (let i = 0; i < wishlist_items_array.length - 1; i++) {
       for (let j = i + 1; j < wishlist_items_array.length; j++) {
-        if (wishlist_items_array[i] === wishlist_items_array[j]) {
+        if (wishlist_items_array[i] === Number(wishlist_items_array[j])) {
           wishlist_items_array.splice(j, 1);
         }
       }
@@ -763,18 +765,18 @@ async function main() {
       // loop through the wishlist items array
       let product = products_list_heat.find(
         // find the product in the heat products array
-        (product) => product.id == wishlist_items_array[i]
+        (product) => product.id == Number(wishlist_items_array[i])
       );
       if (product === undefined) {
         product = products_list_merchandise.find(
           // find the product in the merchandise products array
-          (product) => product.id == wishlist_items_array[i]
+          (product) => product.id == Number(wishlist_items_array[i])
         );
       }
       if (product === undefined) {
         product = products_list_basketball.find(
           // find the product in the basketball products array
-          (product) => product.id == wishlist_items_array[i]
+          (product) => product.id == Number(wishlist_items_array[i])
         );
       }
       // add the product to the wishlist overlay
@@ -806,8 +808,18 @@ async function main() {
       let remove_from_wishlist_button = remove_from_wishlist_buttons[i];
       remove_from_wishlist_button.addEventListener("click", (ev) => {
         ev.stopPropagation();
+        console.log(wishlist_items_array);
         for (let j = 0; j < wishlist_items_array.length; j++) {
-          if (wishlist_items_array[j] === remove_from_wishlist_button.id) {
+          console.log(wishlist_items_array[j]);
+          console.log("id of button: " + remove_from_wishlist_button.id);
+          if (
+            Number(wishlist_items_array[j]) ===
+            Number(remove_from_wishlist_button.id)
+          ) {
+            console.log(
+              "id of removing item: " + remove_from_wishlist_button.id
+            );
+            console.log(remove_from_wishlist_button.id);
             wishlist_items_array.splice(j, 1); // remove the product from the wishlist
             break;
           }
@@ -825,7 +837,9 @@ async function main() {
       add_to_cart_button.addEventListener("click", (ev) => {
         ev.stopPropagation();
         for (let j = 0; j < wishlist_items_array.length; j++) {
-          if (wishlist_items_array[j] === add_to_cart_button.id) {
+          if (
+            Number(wishlist_items_array[j]) === Number(add_to_cart_button.id)
+          ) {
             wishlist_items_array.splice(j, 1); // remove the product from the wishlist
             break;
           }
@@ -907,6 +921,8 @@ async function main() {
   });
 
   const reload_cart = (n) => {
+    console.log(cart_items_array);
+    cart_items_array = cart_items_array.map((e) => Number(e));
     // function to reload the cart items in the cart overlay
     if (n !== 1) {
       async function updateCart() {
@@ -945,16 +961,16 @@ async function main() {
     let total_price = 0;
     for (let i = 0; i < cart_items_array.length; i++) {
       let product = products_list_heat.find(
-        (product) => product.id == cart_items_array[i]
+        (product) => product.id == Number(cart_items_array[i])
       );
       if (product === undefined) {
         product = products_list_merchandise.find(
-          (product) => product.id == cart_items_array[i]
+          (product) => product.id == Number(cart_items_array[i])
         );
       }
       if (product === undefined) {
         product = products_list_basketball.find(
-          (product) => product.id == cart_items_array[i]
+          (product) => product.id == Number(cart_items_array[i])
         );
       }
       total_price += product.price;
@@ -988,7 +1004,9 @@ async function main() {
       remove_from_cart_button.addEventListener("click", (ev) => {
         ev.stopPropagation();
         for (let j = 0; j < cart_items_array.length; j++) {
-          if (cart_items_array[j] === remove_from_cart_button.id) {
+          if (
+            Number(cart_items_array[j]) === Number(remove_from_cart_button.id)
+          ) {
             cart_items_array.splice(j, 1); // remove the product from the wishlist
             break;
           }
@@ -1005,7 +1023,9 @@ async function main() {
       add_to_wishlist_button.addEventListener("click", (ev) => {
         ev.stopPropagation();
         for (let j = 0; j < cart_items_array.length; j++) {
-          if (cart_items_array[j] === add_to_wishlist_button.id) {
+          if (
+            Number(cart_items_array[j]) === Number(add_to_wishlist_button.id)
+          ) {
             cart_items_array.splice(j, 1);
             break;
           }

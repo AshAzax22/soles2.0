@@ -18,8 +18,7 @@ app.get("/findid/:categorytofind", async function (req, res) {
 });
 
 app.get("/find/product/:id", async function (req, res) {
-  let ID = req.params.id;
-  ID = Number(ID);
+  let ID = Number(req.params.id);
   res.status(200).json(await Product.find({ id: ID }));
 });
 
@@ -55,10 +54,12 @@ app.post("/updateCart", async function (req, res) {
   try {
     let id = req.body.user;
     let cart = req.body.cart_items_array;
-    let user = await User.findById(id);
+    let user = await User.findOneAndUpdate(
+      { _id: id },
+      { cart: cart },
+      { new: true }
+    );
     if (user) {
-      user.cart = cart;
-      await user.save();
       res.status(200).json({ success: true, message: "Cart Updated" });
     }
   } catch (e) {
@@ -71,10 +72,12 @@ app.post("/updateWishlist", async function (req, res) {
   try {
     let id = req.body.user;
     let wishlist = req.body.wishlist_items_array;
-    let user = await User.findById(id);
+    let user = await User.findOneAndUpdate(
+      { _id: id },
+      { wishlist: wishlist },
+      { new: true }
+    );
     if (user) {
-      user.wishlist = wishlist;
-      await user.save();
       res.status(200).json({ success: true, message: "Wishlist Updated" });
     }
   } catch (e) {
