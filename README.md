@@ -15,10 +15,9 @@ The project is built using the following technologies:
 
 To run the application, follow these steps:
 
-1. Clone the repository with `git clone github.com/AshAzax22.soles2.0.git` 
+1. Clone the repository with `git clone github.com/AshAzax22.soles2.0.git`
 2. Install the dependencies with `npm install`.
-3. Setup the server data with `npm run setup`.
-4. Run the following command to boot up the local server ready to receive requests `npm start`
+3. Run the following command to boot up the local server ready to receive requests `npm start`
 
 The website will be available on localport:5000
 
