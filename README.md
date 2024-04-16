@@ -25,3 +25,7 @@ The website will be available on localport:5000
 
 - `app.js`: The entry point to our application. This file defines our express server and sets up Socket.io. It also requires the routes we'll be using in the application.
 - `public/`: This folder contains static files like CSS and JavaScript files.
+
+## Visit the website
+
+CheckOut the website at: https://soles2-0.vercel.app/
