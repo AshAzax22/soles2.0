@@ -18,7 +18,7 @@ async function connectDB() {
   }
 }
 async function getIds(category) {
-  let baseUrl = `http://localhost:5000/findid/${category}`;
+  let baseUrl = `/findid/${category}`;
   let response = await fetch(baseUrl, { method: "GET" });
   let data = await response.json();
   return data;
@@ -33,7 +33,7 @@ async function gettingIds() {
 }
 
 async function getProduct(id) {
-  let baseUrl = `http://localhost:5000/find/product/${id}`;
+  let baseUrl = `/find/product/${id}`;
   let response = await fetch(baseUrl, { method: "GET" });
   let data = await response.json();
   // console.log(data);
