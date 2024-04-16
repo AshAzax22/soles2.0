@@ -3,7 +3,7 @@ async function connectDB() {
     let mongoConnect = await fetch("/connect", {
       method: "GET",
     });
-
+    console.log(mongoConnect);
     mongoConnect = await mongoConnect.json();
     if (mongoConnect.message === "Connected") {
       console.log("mongoconnected at front");
