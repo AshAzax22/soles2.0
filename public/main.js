@@ -1,7 +1,5 @@
-// let baseURL = window.BASE_URL;
-// console.log(baseURL);
-
-baseURL = "";
+let baseURL = window.BASE_URL;
+console.log(baseURL);
 
 async function connectDB() {
   try {
