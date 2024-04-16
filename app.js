@@ -19,10 +19,10 @@ app.get("/connect", async function (req, res) {
   await mongoose
     .connect(uri)
     .then(() => {
-      res.status(200).json({ message: "Connected" });
+      res.status(200).json({ message: "Connected", pass: req.url });
       console.log("mongoconnected at backend");
     })
-    .catch((err) => res.status(401).json({ message: "Error" }));
+    .catch((err) => res.status(401).json({ message: "Error", pass: req.url }));
 });
 
 app.get("/findid/:categorytofind", async function (req, res) {

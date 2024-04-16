@@ -8,6 +8,7 @@ async function connectDB() {
     });
 
     mongoConnect = await mongoConnect.json();
+    console.log(mongoConnect.pass);
     if (mongoConnect.message === "Connected") {
       console.log("mongoconnected at front");
     } else {
