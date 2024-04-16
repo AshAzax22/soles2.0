@@ -24,12 +24,6 @@ app.use(
   })
 );
 
-const port = process.env.PORT || 5000;
-
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
-});
-
 app.get("/connect", async function (req, res) {
   await mongoose
     .connect(uri)
@@ -118,4 +112,10 @@ app.post("/updateWishlist", async function (req, res) {
 
 app.all("*", (req, res) => {
   res.status(404).sendFile(path.resolve(__dirname, "public", "404.html"));
+});
+
+const port = process.env.PORT || 5000;
+
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
 });
