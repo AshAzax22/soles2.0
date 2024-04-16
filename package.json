@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/AshAzax22/soles2.0#readme",
   "dependencies": {
+    "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "mongoose": "^8.3.1"
   }

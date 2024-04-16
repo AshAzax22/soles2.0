@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const express = require("express");
 const mongoose = require("mongoose");
 
@@ -103,6 +105,8 @@ app.all("*", (req, res) => {
   res.status(404).sendFile(path.resolve(__dirname, "public", "404.html"));
 });
 
-app.listen(5000, () => {
-  console.log("Server is running on port 5000");
+const port = process.env.PORT || 5000;
+
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
 });
