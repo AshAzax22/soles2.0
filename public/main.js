@@ -1,9 +1,11 @@
+let baseURL = window.BASE_URL;
+
 async function connectDB() {
   try {
-    let mongoConnect = await fetch("/connect", {
+    let mongoConnect = await fetch(`${baseURL}/connect`, {
       method: "GET",
     });
-    console.log(mongoConnect);
+
     mongoConnect = await mongoConnect.json();
     if (mongoConnect.message === "Connected") {
       console.log("mongoconnected at front");
@@ -18,8 +20,9 @@ async function connectDB() {
   }
 }
 async function getIds(category) {
-  let baseUrl = `/findid/${category}`;
-  let response = await fetch(baseUrl, { method: "GET" });
+  let response = await fetch(`${baseURL}/findid/${category}`, {
+    method: "GET",
+  });
   let data = await response.json();
   return data;
 }
@@ -33,8 +36,9 @@ async function gettingIds() {
 }
 
 async function getProduct(id) {
-  let baseUrl = `/find/product/${id}`;
-  let response = await fetch(baseUrl, { method: "GET" });
+  let response = await fetch(`${baseURL}/find/product/${id}`, {
+    method: "GET",
+  });
   let data = await response.json();
   // console.log(data);
   return data;
@@ -99,7 +103,7 @@ async function main() {
       alert("Please fill in the fields");
     } else {
       async function login() {
-        const response = await fetch("/login", {
+        const response = await fetch(`${baseURL}/login`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -739,7 +743,7 @@ async function main() {
     if (n != 1) {
       async function updateWishlist() {
         try {
-          let response = await fetch("/updateWishlist", {
+          let response = await fetch(`${baseURL}/updateWishlist`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -928,7 +932,7 @@ async function main() {
     if (n !== 1) {
       async function updateCart() {
         try {
-          let response = await fetch("/updateCart", {
+          let response = await fetch(`${baseURL}/updateCart`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",

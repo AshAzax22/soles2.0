@@ -352,6 +352,12 @@
     <div class="order_successful"><p>Order Successful</p></div>
     <script type="text/javascript" src="particles.min.js"></script>
     <script src="aos-master/dist/aos.js"></script>
+    <script>
+      window.BASE_URL =
+        window.location.host === "localhost:5000"
+          ? "http://localhost:5000"
+          : "https://soles2-0.vercel.app";
+    </script>
     <script src="main.js"></script>
   </body>
 </html>

@@ -23,16 +23,6 @@ app.get("/connect", async function (req, res) {
     .catch((err) => res.status(401).json({ message: "Error" }));
 });
 
-app.get("https://soles2-0.vercel.app/connect", async function (req, res) {
-  await mongoose
-    .connect(uri)
-    .then(() => {
-      res.status(200).json({ message: "Connected" });
-      console.log("mongoconnected at backend");
-    })
-    .catch((err) => res.status(401).json({ message: "Error" }));
-});
-
 app.get("/findid/:categorytofind", async function (req, res) {
   let { categorytofind } = req.params;
   res
@@ -40,58 +30,12 @@ app.get("/findid/:categorytofind", async function (req, res) {
     .json(await Product.find({ category: categorytofind }).select("id"));
 });
 
-app.get(
-  "https://soles2-0.vercel.app/findid/:categorytofind",
-  async function (req, res) {
-    let { categorytofind } = req.params;
-    res
-      .status(200)
-      .json(await Product.find({ category: categorytofind }).select("id"));
-  }
-);
-
 app.get("/find/product/:id", async function (req, res) {
   let ID = Number(req.params.id);
   res.status(200).json(await Product.find({ id: ID }));
 });
 
-app.get(
-  "https://soles2-0.vercel.app/find/product/:id",
-  async function (req, res) {
-    let ID = Number(req.params.id);
-    res.status(200).json(await Product.find({ id: ID }));
-  }
-);
-
 app.post("/login", async function (req, res) {
-  let { username, password } = req.body;
-  let user = await User.findOne({ username: username });
-  if (user) {
-    if (user.password === password) {
-      res.status(200).json({
-        success: true,
-        message: "Login Successful",
-        id: user._id,
-        cart: user.cart,
-        wishlist: user.wishlist,
-      });
-    } else {
-      res.status(200).json({ success: false, message: "Incorrect Password" });
-    }
-  } else {
-    user = new User({ username: username, password: password });
-    await user.save();
-    res.status(200).json({
-      success: true,
-      message: "Account Created",
-      id: user._id,
-      cart: user.cart,
-      wishlist: user.wishlist,
-    });
-  }
-});
-
-app.post("https://soles2-0.vercel.app/login", async function (req, res) {
   let { username, password } = req.body;
   let user = await User.findOne({ username: username });
   if (user) {
@@ -137,24 +81,6 @@ app.post("/updateCart", async function (req, res) {
   }
 });
 
-app.post("https://soles2-0.vercel.app/updateCart", async function (req, res) {
-  try {
-    let id = req.body.user;
-    let cart = req.body.cart_items_array;
-    let user = await User.findOneAndUpdate(
-      { _id: id },
-      { cart: cart },
-      { new: true }
-    );
-    if (user) {
-      res.status(200).json({ success: true, message: "Cart Updated" });
-    }
-  } catch (e) {
-    console.log(e);
-    res.status(200).json({ success: false, message: "Error" });
-  }
-});
-
 app.post("/updateWishlist", async function (req, res) {
   try {
     let id = req.body.user;
@@ -172,27 +98,6 @@ app.post("/updateWishlist", async function (req, res) {
     res.status(200).json({ success: false, message: "Error" });
   }
 });
-
-app.post(
-  "https://soles2-0.vercel.app/updateWishlist",
-  async function (req, res) {
-    try {
-      let id = req.body.user;
-      let wishlist = req.body.wishlist_items_array;
-      let user = await User.findOneAndUpdate(
-        { _id: id },
-        { wishlist: wishlist },
-        { new: true }
-      );
-      if (user) {
-        res.status(200).json({ success: true, message: "Wishlist Updated" });
-      }
-    } catch (e) {
-      console.log(e);
-      res.status(200).json({ success: false, message: "Error" });
-    }
-  }
-);
 
 app.all("*", (req, res) => {
   res.status(404).sendFile(path.resolve(__dirname, "public", "404.html"));
