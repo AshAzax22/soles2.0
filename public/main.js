@@ -1,3 +1,21 @@
+async function connectDB() {
+  try {
+    let mongoConnect = await fetch("http://localhost:5000/connect", {
+      method: "GET",
+    });
+    mongoConnect = await mongoConnect.json();
+    if (mongoConnect.message === "Connected") {
+      console.log("mongoconnected at front");
+    } else {
+      console.log("MongoDB not connected, retrying connection");
+      connectDB();
+    }
+  } catch (e) {
+    console.log(e);
+    console.log("MongoDB not connected, retrying connection");
+    connectDB();
+  }
+}
 async function getIds(category) {
   let baseUrl = `http://localhost:5000/findid/${category}`;
   let response = await fetch(baseUrl, { method: "GET" });
@@ -46,7 +64,6 @@ async function gettingProducts() {
 }
 
 async function main() {
-  await gettingProducts();
   let user = null;
   let cart_items_array = []; // cart items array to store id of products inside the cart
   let wishlist_items_array = []; // wishlist items array to store id of products inside the wishlist
@@ -1217,9 +1234,10 @@ async function main() {
   });
 }
 
-main();
-
-window.onload = () => {
+window.onload = async () => {
+  await connectDB();
+  await gettingProducts();
+  await main();
   let preloader = document.querySelector(".preloader");
   preloader.style.setProperty("transform", "translateY(-100%)");
   preloader.style.setProperty("opacity", "0");
