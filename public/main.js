@@ -1239,7 +1239,7 @@ async function main() {
 }
 
 window.onload = async () => {
-  await connectDB();
+  // await connectDB();
   await gettingProducts();
   await main();
   let preloader = document.querySelector(".preloader");
