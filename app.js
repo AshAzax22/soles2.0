@@ -1,11 +1,7 @@
-require("dotenv").config();
-
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
-
-const uri =
-  "mongodb+srv://ashutosh:ashutosh@cluster0.rdfqgfc.mongodb.net/soles";
+require("dotenv").config();
 
 const Product = require("./public/Product");
 const User = require("./public/User");
@@ -26,7 +22,7 @@ app.use(
 
 app.get("/connect", async function (req, res) {
   await mongoose
-    .connect(uri)
+    .connect(process.env.MONGO_URI)
     .then(() => {
       res.status(200).json({ message: "Connected", pass: req.url });
       console.log("mongoconnected at backend");
@@ -114,7 +110,7 @@ app.all("*", (req, res) => {
   res.status(404).sendFile(path.resolve(__dirname, "public", "404.html"));
 });
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT;
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
