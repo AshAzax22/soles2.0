@@ -4,15 +4,15 @@ async function connectDB() {
     let mongoConnect = await fetch(`${currentUrl}connect`, {
       method: "GET",
     });
-
-    mongoConnect = await mongoConnect.json();
-    console.log(mongoConnect.pass);
-    if (mongoConnect.message === "Connected") {
-      console.log("mongoconnected at front");
-    } else {
-      console.log("MongoDB not connected, retrying connection");
-      connectDB();
-    }
+    console.log(mongoConnect);
+    // mongoConnect = await mongoConnect.json();
+    // console.log(mongoConnect.pass);
+    // if (mongoConnect.message === "Connected") {
+    //   console.log("mongoconnected at front");
+    // } else {
+    //   console.log("MongoDB not connected, retrying connection");
+    //   connectDB();
+    // }
   } catch (e) {
     console.log(e);
     console.log("MongoDB not connected, retrying connection");
