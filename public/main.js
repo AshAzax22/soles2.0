@@ -5,14 +5,14 @@ async function connectDB() {
       method: "GET",
     });
     console.log(mongoConnect);
-    // mongoConnect = await mongoConnect.json();
-    // console.log(mongoConnect.pass);
-    // if (mongoConnect.message === "Connected") {
-    //   console.log("mongoconnected at front");
-    // } else {
-    //   console.log("MongoDB not connected, retrying connection");
-    //   connectDB();
-    // }
+    mongoConnect = await mongoConnect.json();
+    console.log(mongoConnect.pass);
+    if (mongoConnect.message === "Connected") {
+      console.log("mongoconnected at front");
+    } else {
+      console.log("MongoDB not connected, retrying connection");
+      connectDB();
+    }
   } catch (e) {
     console.log(e);
     console.log("MongoDB not connected, retrying connection");
