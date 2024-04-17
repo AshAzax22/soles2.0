@@ -1,7 +1,7 @@
 async function connectDB() {
   console.log(currentUrl);
   try {
-    let mongoConnect = await fetch(`${currentUrl}connect`, {
+    let mongoConnect = await fetch(`/connect`, {
       method: "GET",
     });
     console.log(mongoConnect);
@@ -20,7 +20,7 @@ async function connectDB() {
   }
 }
 async function getIds(category) {
-  let response = await fetch(`${currentUrl}findid/${category}`, {
+  let response = await fetch(`/findid/${category}`, {
     method: "GET",
   });
   let data = await response.json();
@@ -36,7 +36,7 @@ async function gettingIds() {
 }
 
 async function getProduct(id) {
-  let response = await fetch(`${currentUrl}find/product/${id}`, {
+  let response = await fetch(`/find/product/${id}`, {
     method: "GET",
   });
   let data = await response.json();
@@ -103,7 +103,7 @@ async function main() {
       alert("Please fill in the fields");
     } else {
       async function login() {
-        const response = await fetch(`${currentUrl}login`, {
+        const response = await fetch(`login`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -743,7 +743,7 @@ async function main() {
     if (n != 1) {
       async function updateWishlist() {
         try {
-          let response = await fetch(`${currentUrl}updateWishlist`, {
+          let response = await fetch(`/updateWishlist`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -932,7 +932,7 @@ async function main() {
     if (n !== 1) {
       async function updateCart() {
         try {
-          let response = await fetch(`${currentUrl}updateCart`, {
+          let response = await fetch(`/updateCart`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
