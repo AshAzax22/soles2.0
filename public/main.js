@@ -1,4 +1,5 @@
 async function connectDB() {
+  console.log(currentUrl);
   try {
     let mongoConnect = await fetch(`${currentUrl}connect`, {
       method: "GET",
