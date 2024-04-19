@@ -1239,6 +1239,18 @@ async function main() {
 }
 
 window.onload = async () => {
+  function checkOnline() {
+    return new Promise((resolve) => {
+      if (navigator.onLine) {
+        resolve();
+      } else {
+        alert("You are offline, connect to internet!");
+        window.addEventListener("online", resolve);
+      }
+    });
+  }
+
+  await checkOnline();
   await connectDB();
   await gettingProducts();
   await main();
