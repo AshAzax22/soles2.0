@@ -868,15 +868,15 @@ async function main() {
     let add_to_wishlist_button = add_to_wishlist_buttons[i];
     add_to_wishlist_button.addEventListener("click", (e) => {
       e.stopPropagation();
+      overlay_close_function(document.querySelector(".cart"));
+      dropdown_close_function();
+      overlay_close_function(document.querySelector(".product_overlay"));
+      overlay_close_function(wishlist_overlay);
       if (!user) {
         overlay_open_function(login_overlay);
         return;
       }
       overlay_close_function(document.querySelector(".login"));
-      overlay_close_function(document.querySelector(".cart"));
-      dropdown_close_function();
-      overlay_close_function(document.querySelector(".product_overlay"));
-      overlay_close_function(wishlist_overlay);
       // add to wishlist button event listener
       if (add_to_wishlist_button.style.fill === "red") {
         // if the product is in the wishlist remove it
@@ -1049,10 +1049,20 @@ async function main() {
     let add_to_cart_button = add_to_cart_buttons[i];
     add_to_cart_button.addEventListener("click", (e) => {
       e.stopPropagation();
+      overlay_close_function(document.querySelector(".cart"));
+      dropdown_close_function();
+      overlay_close_function(document.querySelector(".product_overlay"));
+      overlay_close_function(wishlist_overlay);
       if (!user) {
         overlay_open_function(login_overlay);
         return;
       }
+      overlay_close_function(document.querySelector(".login"));
+      add_to_cart_button.style.setProperty("fill", "rgb(85, 255, 85)");
+      setTimeout(() => {
+        add_to_cart_button.style.removeProperty("fill");
+      }, 1000);
+
       cart_items_array.push(Number(add_to_cart_button.id));
       reload_cart();
     });
