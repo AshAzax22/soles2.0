@@ -28,4 +28,4 @@ The website will be available on localport:5000
 
 ## Visit the website
 
-[CheckOut the website at: click here](https://soles2-0.onrender.com)
+[click here](https://soles2-0.onrender.com)
